@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CoreHotelRoomBookingAdminPortal.Models.HotelRoom>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Hotel Room Details</h2>
+<br />
+<a asp-action="Create" asp-controller="HotelRoom" class="btn btn-success">Create</a> 
+<br/>
+<br/>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomDescription)
+            </th>
+           
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomType)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomDescription)
+                </td>
+              
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.RoomId" class="btn btn-info">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.RoomId" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.RoomId"class="btn btn-danger">Delete</a>
+                    @*As index and details are in same controller that is author we can skip writing the controller name*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

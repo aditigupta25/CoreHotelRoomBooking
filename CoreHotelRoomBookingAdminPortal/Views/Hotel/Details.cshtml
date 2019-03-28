@@ -1,0 +1,89 @@
+﻿@model CoreHotelRoomBookingAdminPortal.Models.Hotel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th> @Html.DisplayNameFor(model => model.HotelId) </th>
+        <th> @Html.DisplayFor(model => model.HotelId) </th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.HotelName)</th>
+        <th>@Html.DisplayFor(model => model.HotelName)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.HotelDescription)</th>
+        <th>@Html.DisplayFor(model => model.HotelDescription)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.HotelAddress)</th>
+       <th> @Html.DisplayFor(model => model.HotelAddress)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.District)</th>
+        <th>@Html.DisplayFor(model => model.District)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.City)</th>
+        <th>@Html.DisplayFor(model => model.City)</th>
+    </tr>
+    <tr>
+       <th> @Html.DisplayNameFor(model => model.State)</th>
+        <th>@Html.DisplayFor(model => model.State)</th>
+    </tr>
+    <tr>
+        <th> @Html.DisplayNameFor(model => model.Country)</th>
+        <th>@Html.DisplayFor(model => model.Country)</th>
+    </tr>
+    <tr>
+        <th> @Html.DisplayNameFor(model => model.HotelEmailId)</th>
+        <th>@Html.DisplayFor(model => model.HotelEmailId)</th>
+    </tr>
+    <tr>
+
+        <th>@Html.DisplayNameFor(model => model.HotelRating)</th>
+        <th>@Html.DisplayFor(model => model.HotelRating)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.HotelImage)</th>
+        <th>@Html.DisplayFor(model => model.HotelImage)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.HotelContactNumber)</th>
+        <th>@Html.DisplayFor(model => model.HotelContactNumber)</th>
+    </tr>
+    <tr>
+        <th> @Html.DisplayNameFor(model => model.HotelId)</th>
+        <th> @Html.DisplayFor(model => model.HotelId)</th>
+    </tr>
+    </thead>
+</table>
+<br />
+
+@*<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="https://media-cdn.tripadvisor.com/media/photo-s/0e/b9/8a/3e/gomang-boutique-hotel.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><b>@Html.DisplayFor(model => model.HotelName)</b></h5>
+                <p class="card-text">@Html.DisplayFor(model => model.HotelDescription)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.HotelAddress)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.District)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.State)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.City)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.Country)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.HotelContactNumber)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.HotelRating)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.HotelId)</p>
+                <p class="card-text">@Html.DisplayFor(model => model.HotelEmailId)</p>
+            </div>
+        </div>
+    </div>
+</div>*@
+<a asp-controller="Hotel" asp-action="Index" class="btn btn-primary">Back To List</a>

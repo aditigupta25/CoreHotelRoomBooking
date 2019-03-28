@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CoreHotelRoomBookingAdminPortal.Models.Hotel>
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hotel Details</h2>
+<br />
+<a asp-action="Create" asp-controller="Hotel" class="btn btn-success">Create</a> 
+<br/>
+<br/>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HotelId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HotelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HotelDescription)
+            </th>
+            
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HotelId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HotelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HotelDescription)
+                </td>
+                
+                <td>
+
+                    @*<a asp-action="Details" asp-route-id="@item.HotelId">Details</a> |*@
+                    <a asp-action="Details" asp-route-id="@item.HotelId" class="btn btn-info">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.HotelId"class="btn btn-primary">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.HotelId" class="btn btn-danger">Delete</a>
+                    @*As index and details are in same controller that is author we can skip writing the controller name*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

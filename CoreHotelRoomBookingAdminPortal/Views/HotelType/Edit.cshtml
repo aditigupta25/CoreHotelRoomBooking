@@ -1,0 +1,39 @@
+﻿@model CoreHotelRoomBookingAdminPortal.Models.HotelType
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edit</h2>
+@*<form asp-action="Edit" asp-controller="HotelType">
+
+        <input type="hidden" asp-for="HotelTypeId" />
+        <br />
+        <label asp-for="HotelTypeName"></label>
+        <input type="text" asp-for="HotelTypeName" />
+        <br />
+        <label asp-for="HotelTypeDescription"></label>
+        <input type="text" asp-for="HotelTypeDescription" />
+        <br />
+        <input type="submit" value="Edit HotelType" />
+    </form>*@
+
+<form asp-action="Edit" asp-controller="HotelType">
+    <div class="form-group">
+
+        <input type="hidden" asp-for="HotelTypeId" class="form-control" aria-describedby="HotelTypeId" placeholder="Enter Hotel Type Id">
+    </div>
+    <div class="form-group">
+        <label asp-for="HotelTypeName"> Hotel Type Name</label>
+        <input type="text" asp-for="HotelTypeName" class="form-control" aria-describedby="HotelTypeName" placeholder="Enter Hotel Type Name">
+    </div>
+    <div class="form-group">
+        <label asp-for="HotelTypeDescription">Hotel Type Description</label>
+        <input type="text" asp-for="HotelTypeDescription" class="form-control" aria-describedby="HotelTypeDescription" placeholder="Enter Hotel Type Description">
+    </div>
+    <button type="submit" class="btn btn-primary">Edit HotelType</button>
+    <br />
+
+</form>
+
+    <a asp-controller="HotelType" asp-action="Index" class="btn btn-primary">Back To List</a>

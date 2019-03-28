@@ -1,0 +1,66 @@
+﻿@model CoreHotelRoomBookingAdminPortal.Models.HotelRoom
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<br />
+<br />
+
+@*<form asp-action="Edit" asp-controller="HotelRoom">
+
+        <label asp-for="RoomId"></label>
+        <input type="text" asp-for="RoomId" />
+        <br />
+        <label asp-for="RoomType"></label>
+        <input type="text" asp-for="RoomType" />
+        <br />
+        <label asp-for="RoomPrice"></label>
+        <input type="text" asp-for="RoomPrice" />
+        <br />
+        <label asp-for="RoomImage"></label>
+        <input type="text" asp-for="RoomImage" />
+        <br />
+        <label asp-for="RoomDescription"></label>
+        <input type="text" asp-for="RoomDescription" />
+        <br />
+        <label asp-for="HotelId"></label>
+        <select asp-for="HotelId" asp-items="ViewBag.hotels"></select>
+        <br />
+        <input type="submit" value="Edit HotelRoom" />
+    </form>*@
+
+<form asp-action="Edit" asp-controller="HotelRoom">
+    <div class="form-group">
+        @*<label asp-for="RoomId">Room Id</label>*@
+        <input type="hidden" asp-for="RoomId" class="form-control" aria-describedby="RoomId" placeholder="Enter Room Type">
+    </div>
+    <div class="form-group">
+        <label asp-for="RoomType">Room Type</label>
+        <input type="text" asp-for="RoomType" class="form-control" aria-describedby="RoomType" placeholder="Enter Room Type">
+    </div>
+    <div class="form-group">
+        <label asp-for="RoomPrice">Room Price</label>
+        <input type="text" asp-for="RoomPrice" class="form-control" aria-describedby="RoomPrice" placeholder="Enter Room Price">
+    </div>
+    <div class="form-group">
+        <label asp-for="RoomDescription">Room Description</label>
+        <input type="text" asp-for="RoomDescription" class="form-control" aria-describedby="RoomDescription" placeholder="Enter Room Description">
+    </div>
+    <div class="form-group">
+        <label asp-for="HotelId">Hotel Id</label>
+        <select asp-for="HotelId" asp-items="ViewBag.hotels" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RoomImage">Upload Room Image</label>
+        <input type="text" asp-for="RoomImage" class="form-control" aria-describedby="RoomImage" placeholder="Enter Room Image URL">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Edit Room</button>
+</form>
+
+<a asp-controller="HotelRoom" asp-action="Index" class="btn btn-primary">Back To List</a>

@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model IEnumerable<CoreHotelRoomBookingAdminPortal.Models.RoomFacility>
+<h2>Room Facility</h2>
+<br/>
+<a asp-action="Create" asp-controller="RoomFacility" class="btn btn-success">Create</a> 
+<br/>
+<br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomFacilityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAvailable)
+            </th>      
+            <th>
+                @Html.DisplayNameFor(model => model.RoomId)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modeItem => item.RoomFacilityId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modeItem => item.IsAvailable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modeItem => item.RoomId)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.RoomFacilityId"class="btn btn-info">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.RoomFacilityId" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.RoomFacilityId" class="btn btn-danger">Delete</a>
+
+                    @* <a asp-controller="Book"
+        asp-action="Details"
+        asp-route-id="@item.BookId">Details</a>*@
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

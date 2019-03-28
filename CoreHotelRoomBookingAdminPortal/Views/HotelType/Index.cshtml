@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CoreHotelRoomBookingAdminPortal.Models.HotelType>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Hotel Type Details</h2>
+<br />
+<a asp-action="Create" asp-controller="HotelType" class="btn btn-success">Create</a> 
+<br/>
+<br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HotelTypeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HotelTypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HotelTypeDescription)
+            </th>
+
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HotelTypeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HotelTypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HotelTypeDescription)
+                </td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.HotelTypeId" class="btn btn-info">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.HotelTypeId" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.HotelTypeId" class="btn btn-danger">Delete</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
