@@ -5,6 +5,6 @@
 
  
 
-        function myFunction() {
-        document.getElementById("demo").innerHTML = "Booked!";
+function myFunction() {
+    alert("Booked !!");
     }

@@ -1,9 +1,7 @@
 ﻿.jumbotron {
     height:550px;
     color: black;
-    //background-color: MediumSeaGreen;
     background-size: cover;
-    font-style: italic;
     background-attachment: fixed;
     font-size: 20px;
     font-weight: bold;
@@ -19,4 +17,14 @@
 
 .section_jumbo {
     align-items:center;
+}
+
+.header-style {
+    font-family:'Lucida Calligraphy';
+    font-size:50px;
+}
+
+.header-style2 {
+    font-family: Calibri;
+    font-size: 20px;
 }
