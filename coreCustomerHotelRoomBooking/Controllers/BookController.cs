@@ -81,6 +81,26 @@ namespace CustomerCoreHotel.Controllers
             int index = isExist(id);
             book.RemoveAt(index);
             SessionHelper.SetObjectAsJson(HttpContext.Session, "Book", book);
+            int count = 0;
+            foreach (var item in book)
+            {
+                count++;
+            }
+            if (count != 0)
+            {
+                int j = int.Parse(HttpContext.Session.GetString("CartItem"));
+                j--;
+                HttpContext.Session.SetString("CartItem", j.ToString());
+            }
+            else
+            {
+                HttpContext.Session.Remove("CartItem");
+                if (index == 0)
+                {
+                    return View("Empty Cart");
+                }
+            }
+
             return RedirectToAction("index");
         }
         private int isExist(int id)
@@ -107,6 +127,7 @@ namespace CustomerCoreHotel.Controllers
         public IActionResult CheckOut(int id)
         {
             var customers = context.Customers.Where(x => x.CustomerId == id).SingleOrDefault();
+            //var bookings = context.Bookings.Where(x => x.CustomerId == id).SingleOrDefault();
             var book = SessionHelper.GetObjectFromJson<List<Item>>
                   (HttpContext.Session, "Book");
             ViewBag.book = book;
@@ -124,10 +145,15 @@ namespace CustomerCoreHotel.Controllers
            
             var amount = TempData["total"];
             var cid = (TempData["cid"]).ToString();
+
+            DateTime cin = DateTime.Parse(HttpContext.Session.GetString("CheckIn"));
+            DateTime cout = DateTime.Parse(HttpContext.Session.GetString("CheckOut"));
             Bookings bookings = new Bookings()
             {
                 BookingPrice = Convert.ToSingle(amount),
                 BookingDate = DateTime.Now,
+                CheckIn = cin,
+                CheckOut = cout,
                 CustomerId = int.Parse(cid)
             };
 
@@ -168,7 +194,10 @@ namespace CustomerCoreHotel.Controllers
 
             var book = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "Book");      
             ViewBag.book = book;
-            ViewBag.total = book.Sum(item => item.HotelRooms.RoomPrice * item.Quantity);         
+            book = null;
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "Book", book);
+            HttpContext.Session.Remove("CartItem");
+            //ViewBag.total = book.Sum(item => item.HotelRooms.RoomPrice * item.Quantity);         
             return View();
            
         }

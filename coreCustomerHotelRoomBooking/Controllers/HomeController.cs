@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using coreCustomerHotelRoomBooking.Models;
+using coreCustomerHotelRoomBooking.Helpers;
+using Microsoft.AspNetCore.Http;
 
 namespace coreCustomerHotelRoomBooking.Controllers
 {
@@ -15,6 +17,20 @@ namespace coreCustomerHotelRoomBooking.Controllers
         {
 
             var hotels = context.Hotels.ToList();
+            List<Item> book = SessionHelper.GetObjectFromJson<List<Item>>
+                (HttpContext.Session, "Book");
+            int count = 0;
+            if (book != null)
+            {
+                foreach (var item in book)
+                {
+                    count++;
+                }
+                if (count != 0)
+                {
+                    HttpContext.Session.SetString("CartItem", count.ToString());
+                }
+            }
             return View(hotels);
 
         }
@@ -29,22 +45,15 @@ namespace coreCustomerHotelRoomBooking.Controllers
             return View();
         }
 
-        //public IActionResult CustomerDetails(int id)
-        //{
-        //    Customers customers = context.Customers.Where(x => x.CustomerId == id).SingleOrDefault();
-        //    //return RedirectToAction("CheckOut", "Book", new { id });
-        //    return View();
-        //}
-
         [Route("search")]
         [HttpGet]
-        public IActionResult Search(string search)
+        public IActionResult Search(string search , string checkIn,string checkOut)
         {
+            HttpContext.Session.SetString("CheckIn", checkIn.ToString());
+            HttpContext.Session.SetString("CheckOut", checkOut.ToString());
+            //var home = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session,"Home");
             ViewBag.Hotel = context.Hotels.Where(x => x.HotelName == search || x.City == search || x.State == search || search == null).ToList();
             return View(context.Hotels.Where(x => x.HotelName == search || search == null).ToList());
         }
-
-
-
     }
 }
